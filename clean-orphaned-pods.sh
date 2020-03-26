@@ -12,6 +12,7 @@ do
 	echo "found orphaned pod $podid"
 
 	if [ ! -d "$podspath/$podid/volumes" ]; then
+		orphanednum=$(( $orphanednum -1 ))
 		continue
 	fi
 
