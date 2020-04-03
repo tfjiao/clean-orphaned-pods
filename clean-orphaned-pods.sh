@@ -11,6 +11,7 @@ do
 	podid=`tail $logpath | grep "Orphaned pod" | tail -n 1 | awk -F "Orphaned pod" '{print $2}' | awk '{print $1}' | sed 's/"//g'`
 	echo "found orphaned pod $podid"
 
+	# this part is not necesary
 	if [ ! -d "$podspath/$podid/volumes" ]; then
 		orphanednum=$(( $orphanednum -1 ))
 		continue
@@ -25,7 +26,7 @@ do
 		done
 	fi
 
-	echo "start to clean orphaned pod $podid"
+	echo "starting to delete orphaned pod $podid"
 
 	volumeTypes=`ls $podspath/$podid/volumes/`
 	for volumeType in $volumeTypes;
